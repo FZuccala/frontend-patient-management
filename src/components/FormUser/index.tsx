@@ -1,62 +1,68 @@
-import React, { useEffect } from 'react'
-import { Grid, TextField } from '@mui/material'
-import { useUserStore } from '@/store/userStore'
-import { emptyFormInformation } from '@/utils/formInformation'
-import { TUser } from '@/typings'
-import { UseFormReturn, Controller } from 'react-hook-form'
+import React, { useEffect } from 'react';
+import { Grid, TextField } from '@mui/material';
+import { useUserStore } from '@/store/userStore';
+import { emptyFormInformation } from '@/utils/formInformation';
+import { TUser } from '@/typings';
+import { UseFormReturn, Controller } from 'react-hook-form';
 type Props = {
-    isEditable?: boolean
-    formInstance: UseFormReturn<TUser>
-}
+  isEditable?: boolean;
+  formInstance: UseFormReturn<TUser>;
+};
 
-const FormUser = ({isEditable, formInstance}: Props) => {
-    const { setValue, control } = formInstance;
-    const { selectedUser } = useUserStore();
-    useEffect(() => {
-        if (isEditable && selectedUser){
-            Object.keys(selectedUser).forEach((key) => {
-                setValue(key as keyof TUser, selectedUser[key as keyof TUser], { shouldDirty: false})
-            })
-        }
+const FormUser = ({ isEditable, formInstance }: Props) => {
+  const { setValue, control } = formInstance;
+  const { selectedUser } = useUserStore();
+  useEffect(() => {
+    if (isEditable && selectedUser) {
+      Object.keys(selectedUser).forEach((key) => {
+        setValue(key as keyof TUser, selectedUser[key as keyof TUser], { shouldDirty: false });
+      });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selectedUser, isEditable])
+  }, [selectedUser, isEditable]);
   return (
-    <Grid container spacing={3} rowGap={2} sx={{
-        marginTop: '12px'
-    }}>
-        {
-            emptyFormInformation.filter(it => it.shouldShow).map((formInformation) => {
-                return (
-                    <Grid item xs={12} sm={6}  key={formInformation.key}>
-                        <Controller
-                            name={formInformation.key as keyof TUser}
-                            control={control}
-                            defaultValue=""
-                            render={(data) => {
-                                const {
-                                    field: { onChange, value },
-                                  } = data;
-                                return ((
-                                    <TextField
-                                      helperText={value === '' && formInformation.isRequired ? "El campo es requerido" : null}
-                                      size="small"
-                                      error={(value === '' && formInformation.isRequired)}
-                                      required={formInformation.isRequired}
-                                      onChange={onChange}
-                                      value={value}
-                                      fullWidth
-                                      label={formInformation.label}
-                                      variant="outlined"
-                                    />
-                                  ))
-                              }}
-                        />
-                    </Grid>
-                )
-            })
-        }
-    </Grid>    
-  )
-}
+    <Grid
+      container
+      spacing={3}
+      rowGap={2}
+      sx={{
+        marginTop: '12px',
+      }}
+    >
+      {emptyFormInformation
+        .filter((it) => it.shouldShow)
+        .map((formInformation) => {
+          return (
+            <Grid item xs={12} sm={6} key={formInformation.key}>
+              <Controller
+                name={formInformation.key as keyof TUser}
+                control={control}
+                defaultValue=""
+                render={(data) => {
+                  const {
+                    field: { onChange, value },
+                  } = data;
+                  return (
+                    <TextField
+                      helperText={value === '' && formInformation.isRequired ? 'El campo es requerido' : null}
+                      size="small"
+                      error={value === '' && formInformation.isRequired}
+                      required={formInformation.isRequired}
+                      onChange={onChange}
+                      value={value}
+                      fullWidth
+                      label={formInformation.label}
+                      variant="outlined"
+                      disabled={!isEditable}
+                    />
+                  );
+                }}
+              />
+            </Grid>
+          );
+        })}
+    </Grid>
+  );
+};
 
-export default FormUser
+export default FormUser;
