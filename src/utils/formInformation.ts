@@ -1,0 +1,233 @@
+import { TUser } from '@/typings';
+import { nanoid } from 'nanoid';
+
+export interface IFormInformation {
+  label: string;
+  key: keyof TUser;
+  type: string;
+  multiline?: boolean;
+  rows?: number;
+  value: string;
+  isRequired: boolean;
+}
+export const emptyFormInformation = [
+  {
+    key: 'id',
+    value: nanoid(),
+    shouldShow: false,
+    isRequired: true,
+  },
+  {
+    label: 'Fecha de creación',
+    key: 'createdAt',
+    value: new Date().toISOString(),
+    shouldShow: false,
+    isRequired: true,
+  },
+  {
+    label: 'Nombre',
+    key: 'name',
+    type: 'text',
+    value: '',
+    shouldShow: true,
+    isRequired: true,
+  },
+  {
+    label: 'Avatar',
+    key: 'avatar',
+    type: 'text',
+    value: '',
+    shouldShow: true,
+    isRequired: true,
+  },
+  {
+    label: 'Descripción',
+    key: 'description',
+    type: 'text',
+    multiline: true,
+    rows: 3,
+    value: '',
+    shouldShow: true,
+    isRequired: true,
+  },
+  {
+    label: 'Sitio web',
+    key: 'website',
+    type: 'text',
+    value: '',
+    shouldShow: true,
+    isRequired: true,
+  },
+  {
+    label: 'N° de operación',
+    key: 'operationId',
+    type: 'text',
+    value: '',
+    shouldShow: true,
+    isRequired: false,
+  },
+  {
+    label: 'Tipo de documento',
+    key: 'documentType',
+    type: 'text',
+    value: '',
+    shouldShow: true,
+    isRequired: false,
+  },
+  {
+    label: 'N° de documento',
+    key: 'documentNumber',
+    type: 'text',
+    value: '',
+    shouldShow: true,
+    isRequired: false,
+  },
+  {
+    label: 'N° de producto',
+    key: 'productNumber',
+    type: 'text',
+    value: '',
+    shouldShow: true,
+    isRequired: false,
+  },
+  {
+    label: 'Usuario',
+    key: 'user',
+    type: 'text',
+    value: '',
+    shouldShow: true,
+    isRequired: false,
+  },
+  {
+    label: 'Origen',
+    key: 'origin',
+    type: 'text',
+    value: '',
+    shouldShow: true,
+    isRequired: false,
+  },
+  {
+    label: 'Opción',
+    key: 'option',
+    type: 'text',
+    value: '',
+    shouldShow: true,
+    isRequired: false,
+  },
+  {
+    label: 'Modo de contacto',
+    key: 'contactMode',
+    type: 'text',
+    value: '',
+    shouldShow: true,
+    isRequired: false,
+  },
+  {
+    label: 'Código de producto',
+    key: 'productCode',
+    type: 'text',
+    value: '',
+    shouldShow: true,
+    isRequired: false,
+  },
+  {
+    label: 'Código de causa',
+    key: 'causeCode',
+    type: 'text',
+    value: '',
+    shouldShow: true,
+    isRequired: false,
+  },
+  {
+    label: 'Código de razón',
+    key: 'reasoncode',
+    type: 'text',
+    value: '',
+    shouldShow: true,
+    isRequired: false,
+  },
+  {
+    label: 'Código de compañía',
+    key: 'companyCode',
+    type: 'text',
+    value: '',
+    shouldShow: true,
+    isRequired: false,
+  },
+  {
+    label: 'Sector responsable',
+    key: 'responsibleSector',
+    type: 'text',
+    value: '',
+    shouldShow: true,
+    isRequired: false,
+  },
+  {
+    label: 'Sector de registro',
+    key: 'registerSector',
+    type: 'text',
+    value: '',
+    shouldShow: true,
+    isRequired: false,
+  },
+  {
+    label: 'Contacto inicial',
+    key: 'initContact',
+    type: 'text',
+    value: '',
+    shouldShow: true,
+    isRequired: false,
+  },
+  {
+    label: 'Contacto final',
+    key: 'closeContact',
+    type: 'text',
+    value: '',
+    shouldShow: true,
+    isRequired: false,
+  },
+  {
+    label: 'Embozo',
+    key: 'embozo',
+    type: 'text',
+    value: '',
+    shouldShow: true,
+    isRequired: false,
+  },
+  {
+    label: 'Categoría',
+    key: 'category',
+    type: 'text',
+    value: '',
+    shouldShow: true,
+    isRequired: false,
+  },
+  {
+    label: 'Domicilio',
+    key: 'domicilio',
+    type: 'text',
+    value: '',
+    shouldShow: true,
+    isRequired: false,
+  },
+  {
+    label: 'Sucursal',
+    key: 'sucursal',
+    type: 'text',
+    value: '',
+    shouldShow: true,
+    isRequired: false,
+  },
+  {
+    label: 'Número de solicitud',
+    key: 'requestNumber',
+    type: 'text',
+    value: '',
+    shouldShow: true,
+    isRequired: false,
+  },
+];
+export const emptyFormInformationObject = emptyFormInformation.reduce((acc, curr) => {
+  acc[curr.key as keyof typeof acc] = curr.value;
+  return acc;
+}, {} as Record<string, string>);

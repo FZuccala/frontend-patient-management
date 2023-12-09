@@ -1,0 +1,32 @@
+import * as z from 'zod';
+
+export const TUserSchema = z.object({
+  createdAt: z.coerce.date(),
+  name: z.string(),
+  avatar: z.string(),
+  description: z.string(),
+  website: z.string().min(1, 'El sitio web es requerido'),
+  id: z.string(),
+  operationId: z.union([z.null(), z.string()]).optional(),
+  documentType: z.union([z.null(), z.string()]).optional(),
+  documentNumber: z.union([z.null(), z.string()]).optional(),
+  productNumber: z.union([z.null(), z.string()]).optional(),
+  user: z.union([z.null(), z.string()]).optional(),
+  origin: z.union([z.null(), z.string()]).optional(),
+  option: z.union([z.null(), z.string()]).optional(),
+  contactMode: z.union([z.null(), z.string()]).optional(),
+  productCode: z.union([z.null(), z.string()]).optional(),
+  causeCode: z.union([z.null(), z.string()]).optional(),
+  reasoncode: z.union([z.null(), z.string()]).optional(),
+  companyCode: z.union([z.null(), z.string()]).optional(),
+  responsibleSector: z.union([z.null(), z.string()]).optional(),
+  registerSector: z.union([z.null(), z.string()]).optional(),
+  initContact: z.union([z.null(), z.string()]).optional(),
+  closeContact: z.union([z.null(), z.string()]).optional(),
+  embozo: z.union([z.null(), z.string()]).optional(),
+  category: z.union([z.null(), z.string()]).optional(),
+  domicilio: z.union([z.null(), z.string()]).optional(),
+  sucursal: z.union([z.null(), z.string()]).optional(),
+  requestNumber: z.union([z.null(), z.string()]).optional(),
+});
+export type TUser = z.infer<typeof TUserSchema>;
