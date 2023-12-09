@@ -14,6 +14,9 @@ npm run dev
 
 ## Tools used
 
+Design Pattern: Atomic Design
+For more information click on this [link](https://medium.com/@janelle.wg/atomic-design-pattern-how-to-structure-your-react-application-2bb4d9ca5f97).
+
 - React
 - NextJS
 - Typescript

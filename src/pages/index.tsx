@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { TUser } from '@/typings';
 import { useUserStore } from '@/store/userStore';
 import dynamic from 'next/dynamic';
-const HomeContainer = dynamic(() => import('../components/Organism/HomeContainer'), {
+const HomeContainer = dynamic(() => import('../components/Templates/HomeContainer'), {
   ssr: false,
 });
 
