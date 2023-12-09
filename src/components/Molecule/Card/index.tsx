@@ -46,7 +46,8 @@ const CustomCard = ({ data }: Props) => {
     });
   };
   const handleInfoIconClick = () => {
-    setSelectedUser(getUserById(data.id) as TUser);
+    const user = getUserById(data.id);
+    setSelectedUser(user as TUser);
     setModalInformation({
       show: true,
       type: 'info',

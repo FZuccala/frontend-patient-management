@@ -13,13 +13,13 @@ const FormUser = ({ isEditable, formInstance }: Props) => {
   const { setValue, control } = formInstance;
   const { selectedUser } = useUserStore();
   useEffect(() => {
-    if (isEditable && selectedUser) {
+    if (selectedUser) {
       Object.keys(selectedUser).forEach((key) => {
         setValue(key as keyof TUser, selectedUser[key as keyof TUser], { shouldDirty: false });
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedUser, isEditable]);
+  }, [selectedUser]);
   return (
     <Grid
       container
