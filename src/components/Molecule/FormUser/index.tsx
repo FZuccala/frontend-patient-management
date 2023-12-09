@@ -10,7 +10,7 @@ type Props = {
 };
 
 const FormUser = ({ isEditable, formInstance }: Props) => {
-  const { setValue, control } = formInstance;
+  const { setValue, control, formState } = formInstance;
   const { selectedUser } = useUserStore();
   useEffect(() => {
     if (selectedUser) {
@@ -44,9 +44,9 @@ const FormUser = ({ isEditable, formInstance }: Props) => {
                   } = data;
                   return (
                     <TextField
-                      helperText={value === '' && formInformation.isRequired ? 'El campo es requerido' : null}
+                      helperText={formState?.errors[formInformation.key as keyof TUser]?.message || ''}
                       size="small"
-                      error={value === '' && formInformation.isRequired}
+                      error={Boolean(formState?.errors[formInformation.key as keyof TUser])}
                       required={formInformation.isRequired}
                       onChange={onChange}
                       value={value}

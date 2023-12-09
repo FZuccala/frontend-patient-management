@@ -8,7 +8,7 @@ import Modal from '../../Organism/Modal';
 import FormUser from '../../Molecule/FormUser';
 import ModalActions from '../../Organism/Modal/Actions';
 import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { TUserSchema, TUser } from '@/typings';
 import { emptyFormInformationObject } from '@/utils/formInformation';
 import AddIcon from '@mui/icons-material/Add';
@@ -18,8 +18,9 @@ type Props = {};
 const HomeContainer = (props: Props) => {
   const { users, setUsers, setSelectedUser } = useUserStore();
   const { modalInformation, setModalInformation } = useGlobalStore();
+  const resolver = yupResolver(TUserSchema);
   const formInstance = useForm<TUser>({
-    resolver: zodResolver(TUserSchema),
+    resolver,
     defaultValues: emptyFormInformationObject,
     mode: 'onChange',
   });
