@@ -2,11 +2,11 @@ import * as z from 'zod';
 
 export const TUserSchema = z.object({
   createdAt: z.coerce.date(),
-  name: z.string(),
-  avatar: z.string(),
-  description: z.string(),
-  website: z.string().min(1, 'El sitio web es requerido'),
-  id: z.string(),
+  name: z.string().trim().min(1),
+  avatar: z.string().trim().min(1),
+  description: z.string().trim().min(1),
+  website: z.string().trim().min(1),
+  id: z.string().trim().min(1),
   operationId: z.union([z.null(), z.string()]).optional(),
   documentType: z.union([z.null(), z.string()]).optional(),
   documentNumber: z.union([z.null(), z.string()]).optional(),
