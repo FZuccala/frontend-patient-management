@@ -75,6 +75,7 @@ const HomeContainer = (props: Props) => {
     <>
       <Grid
         rowSpacing={4}
+        spacing={2}
         container
         sx={{
           padding: '0 24px',
