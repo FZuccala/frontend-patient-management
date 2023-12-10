@@ -64,7 +64,7 @@ const HomeContainer = (props: Props) => {
     });
     formInstance.clearErrors();
   };
-  const getModaltTitle = () => {
+  const getModalTitle = () => {
     const { type } = modalInformation;
     if (type === 'info') {
       return 'User Information';
@@ -87,7 +87,7 @@ const HomeContainer = (props: Props) => {
         ))}
       </Grid>
       <Modal
-        title={getModaltTitle()}
+        title={getModalTitle()}
         open={modalInformation.show}
         onClose={handleCloseModal}
         content={<FormUser isEditable={modalInformation.type !== 'info'} formInstance={formInstance} />}
